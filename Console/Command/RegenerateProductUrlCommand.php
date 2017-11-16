@@ -37,7 +37,7 @@ class RegenerateProductUrlCommand extends Command
     protected $state;
 
     public function __construct(
-        \Magento\Framework\App\State $state,
+        State $state,
         Collection $collection,
         ProductUrlRewriteGenerator $productUrlRewriteGenerator,
         UrlPersistInterface $urlPersist
@@ -72,7 +72,7 @@ class RegenerateProductUrlCommand extends Command
     {
         if (!$this->state->getAreaCode()) {
 //            $this->state->setAreaCode('admin');
-            $this->state->setAreaCode(\Magento\Framework\App\Area::AREA_GLOBAL);
+            $this->state->setAreaCode(\Magento\Framework\App\Area::AREA_ADMINHTML);
         }
 
         $store_id = $inp->getOption('store');
