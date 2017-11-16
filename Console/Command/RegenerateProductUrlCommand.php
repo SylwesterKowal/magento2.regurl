@@ -82,31 +82,31 @@ class RegenerateProductUrlCommand extends Command
         $out->writeln('<info>Store: ' . $store_id . '</info>');
 
 
-//        $this->collection->addStoreFilter($store_id)->setStoreId($store_id);
-//
-//        $pids = $inp->getArgument('pids');
-//        if (!empty($pids))
-//            $this->collection->addIdFilter($pids);
-//
-//        $this->collection->addAttributeToSelect(['url_path', 'url_key']);
-//        $list = $this->collection->load();
-//        foreach ($list as $product) {
+        $this->collection->addStoreFilter($store_id)->setStoreId($store_id);
+
+        $pids = $inp->getArgument('pids');
+        if (!empty($pids))
+            $this->collection->addIdFilter($pids);
+
+        $this->collection->addAttributeToSelect(['url_path', 'url_key']);
+        $list = $this->collection->load();
+        foreach ($list as $product) {
 //            if ($store_id === Store::DEFAULT_STORE_ID)
-//                $product->setStoreId($store_id);
-//
-//            $this->urlPersist->deleteByData([
-//                UrlRewrite::ENTITY_ID => $product->getId(),
-//                UrlRewrite::ENTITY_TYPE => ProductUrlRewriteGenerator::ENTITY_TYPE,
-//                UrlRewrite::REDIRECT_TYPE => 0,
-//                UrlRewrite::STORE_ID => $store_id
-//            ]);
-//            try {
-//                $this->urlPersist->replace(
-//                    $this->productUrlRewriteGenerator->generate($product)
-//                );
-//            } catch (\Exception $e) {
-//                $out->writeln('<error>Duplicated url for ' . $product->getId() . '</error>');
-//            }
-//        }
+                $product->setStoreId($store_id);
+
+            $this->urlPersist->deleteByData([
+                UrlRewrite::ENTITY_ID => $product->getId(),
+                UrlRewrite::ENTITY_TYPE => ProductUrlRewriteGenerator::ENTITY_TYPE,
+                UrlRewrite::REDIRECT_TYPE => 0,
+                UrlRewrite::STORE_ID => $store_id
+            ]);
+            try {
+                $this->urlPersist->replace(
+                    $this->productUrlRewriteGenerator->generate($product)
+                );
+            } catch (\Exception $e) {
+                $out->writeln('<error>Duplicated url for ' . $product->getId() . '</error>');
+            }
+        }
     }
 }
