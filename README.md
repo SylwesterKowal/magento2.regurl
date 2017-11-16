@@ -2,7 +2,7 @@
 
 #install
 ````
-composer require wm21w/module-regen-product-url
+composer require SylwesterKowal/magento2.regurl
 php bin/magento setup:upgrade
 ````
 
