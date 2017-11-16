@@ -2,7 +2,7 @@
 
 #install
 ````
-composer require sylwesterkowal/magento2.regurl
+composer require wm21w/magento2.regurl
 php bin/magento setup:upgrade
 ````
 
@@ -14,5 +14,5 @@ php bin/magento wm21w:regenurl
 ````
 Regenerate url for products with id (1, 2, 3, 4) for store 1
 ````
-php bin/magento iazel:regenurl -s1 1 2 3 4
+php bin/magento wm21w:regenurl --store 1 1 2 3 4
 ````
