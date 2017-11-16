@@ -12,8 +12,7 @@ use Magento\UrlRewrite\Model\UrlPersistInterface;
 use Magento\CatalogUrlRewrite\Model\ProductUrlRewriteGenerator;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Store\Model\Store;
-
-//use Magento\Framework\App\State;
+use Magento\Framework\App\State;
 
 class RegenerateProductUrlCommand extends Command
 {
@@ -38,13 +37,13 @@ class RegenerateProductUrlCommand extends Command
     protected $state;
 
     public function __construct(
-//        State $state,
+        State $state,
         Collection $collection,
         ProductUrlRewriteGenerator $productUrlRewriteGenerator,
         UrlPersistInterface $urlPersist
     )
     {
-//        $this->state = $state;
+        $this->state = $state;
         $this->collection = $collection;
         $this->productUrlRewriteGenerator = $productUrlRewriteGenerator;
         $this->urlPersist = $urlPersist;
@@ -76,7 +75,7 @@ class RegenerateProductUrlCommand extends Command
 //            $this->state->setAreaCode(\Magento\Framework\App\Area::AREA_ADMINHTML);
 //        }
 
-//        $this->state->setAreaCode(\Magento\Framework\App\Area::AREA_ADMINHTML);
+        $this->state->setAreaCode(\Magento\Framework\App\Area::AREA_ADMINHTML);
 
         $store_id = $inp->getOption('store');
         $out->writeln('<info>Store: ' . $store_id . '</info>');
@@ -92,7 +91,7 @@ class RegenerateProductUrlCommand extends Command
         $list = $this->collection->load();
         foreach ($list as $product) {
 //            if ($store_id === Store::DEFAULT_STORE_ID)
-                $product->setStoreId($store_id);
+            $product->setStoreId($store_id);
 
             $this->urlPersist->deleteByData([
                 UrlRewrite::ENTITY_ID => $product->getId(),
