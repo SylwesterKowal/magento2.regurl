@@ -71,7 +71,8 @@ class RegenerateProductUrlCommand extends Command
     public function execute(InputInterface $inp, OutputInterface $out)
     {
         if (!$this->state->getAreaCode()) {
-            $this->state->setAreaCode('admin');
+//            $this->state->setAreaCode('admin');
+            $this->state->setAreaCode(\Magento\Framework\App\Area::AREA_GLOBAL);
         }
 
         $store_id = $inp->getOption('store');
