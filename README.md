@@ -2,7 +2,7 @@
 
 #install
 ````
-composer require SylwesterKowal/magento2.regurl
+composer require sylwesterkowal/magento2.regurl
 php bin/magento setup:upgrade
 ````
 
